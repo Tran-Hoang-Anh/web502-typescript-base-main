@@ -9,11 +9,15 @@ import toast from "react-hot-toast";
 type FormValues = {
   name: string;
   credit: number;
+  category: string;
+  teacher: string;
 };
 
 const validate = z.object({
-  name: z.string().min(3, "Name 3 ky tu").max(100),
-  credit: z.number().min(1).max(100),
+  name: z.string().min(4, "Tên phải dài hơn 3 ký tự").max(100),
+  credit: z.number().positive("Số tín chỉ phải > 0"),
+  category: z.string().min(1, "Vui lòng chọn chuyên mục"),
+  teacher: z.string().min(4, "Tên giảng viên phải dài hơn 3 ký tự").max(100),
 });
 
 function AddPage() {
@@ -24,7 +28,7 @@ function AddPage() {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm({
+  } = useForm<FormValues>({
     resolver: zodResolver(validate),
   });
 
@@ -79,19 +83,47 @@ function AddPage() {
           <span>{errors?.name?.message}</span>
         </div>
 
+        <div>
+          <label htmlFor="credit" className="block font-medium mb-1">
+            Số tín chỉ
+          </label>
+          <input
+            {...register("credit", { valueAsNumber: true })}
+            type="number"
+            id="credit"
+            min={1}
+            className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <span>{errors?.credit?.message}</span>
+        </div>
+
         {/* Select */}
         <div>
           <label htmlFor="selectOption" className="block font-medium mb-1">
-            Select - option
+            Chuyên mục
           </label>
           <select
+            {...register("category")}
             id="selectOption"
             className="w-full border rounded-lg px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+            <option value="">-- Chọn --</option>
+            <option value="Đại cương">Đại cương</option>
           </select>
+          <span>{errors?.category?.message}</span>
+        </div>
+
+        <div>
+          <label htmlFor="teacher" className="block font-medium mb-1">
+            Giảng viên
+          </label>
+          <input
+            {...register("teacher")}
+            type="text"
+            id="teacher"
+            className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <span>{errors?.teacher?.message}</span>
         </div>
 
         {/* Submit button */}

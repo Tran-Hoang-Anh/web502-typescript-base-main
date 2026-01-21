@@ -36,6 +36,13 @@
     {
       "name": "hoadv1",
       "id": 6
+    },
+    {
+      "name": "ádasd",
+      "credit": 123,
+      "category": "Đại cương",
+      "teacher": "ádasdasdas",
+      "id": 7
     }
   ]
 }
