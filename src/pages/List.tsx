@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 // type /interface
 type Course = {
   id: number;
@@ -73,6 +74,7 @@ function ListPage() {
         if (page > newTotalPages) setPage(newTotalPages);
         return next;
       });
+      toast.success("Xóa thành công");
     } catch (error) {
       console.log(error);
     }

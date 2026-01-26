@@ -20,27 +20,6 @@
       "credit": 3,
       "category": "Cơ sở",
       "teacher": "Lê Văn C"
-    },
-    {
-      "id": 4,
-      "name": "Lập trình C",
-      "credit": 4,
-      "category": "Đại cương",
-      "teacher": "Phạm Văn D"
-    },
-    {
-      "name": "hahahahahahahahah",
-      "credit": 12312312312312,
-      "category": "Đại cương",
-      "teacher": "hoang anh",
-      "id": 5
-    },
-    {
-      "name": "gagagagagagagag",
-      "credit": 5454545454545,
-      "category": "Đại cương",
-      "teacher": "hoang anh",
-      "id": 6
     }
   ]
 }
